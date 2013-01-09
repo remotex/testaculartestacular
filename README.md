@@ -20,7 +20,8 @@ It is just using an empty config just to make sure devices can hook up to the ho
 Start this in a scheduled task when the server boots to start the host process.
 If you have installed Testacular with "npm -g install testacular" you will be just fine by starting it without options:
 
-```.\Start-Host.ps1
+```powershell
+.\Start-Host.ps1
 ```
 
 ## Queue-Run.ps1
@@ -31,13 +32,15 @@ This is done by killing the placeholder host and starting a new host with the te
 Call this script from the CI job - with the testacular config to be run - to queue it to the host process.
 Example:
 
-```Queue-Run.ps1 c:\ci\build\app\testacular.conf.js
+```powershell
+Queue-Run.ps1 c:\ci\build\app\testacular.conf.js
 ```
 
 The output from testacular will be sent to the output of this command.
 Example:
 
-```Run 36 is waiting for available executor
+```
+Run 36 is waiting for available executor
 Run 36 status: RUNNING
 Run 36 status: FAILED
 Output:
