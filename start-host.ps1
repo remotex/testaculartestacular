@@ -58,11 +58,11 @@ function executeRun( $runOptionsFile, $hostProcess ) {
 	$status = "FAILED"
 	if( $runProcess.WaitForExit( [TimeSpan]::FromMinutes(10).TotalMilliseconds ) ) {
 		gc $outputFilePath | %{ writeRunOutput $runDir $_ }
-		if( (gi $errorFilePath).Length -eq 0 ) {
+		if( (gi $errorFilePath).Length -eq 0 -or $outputFilePath | Select-String "FAILED" ) {
 			writeRunOutput $runDir "Run $runId completed successfully"
 			$status = "SUCCESS"
 		} else {
-			writeRunOutput $runDir "Run $runId failed due to errors:"
+			writeRunOutput $runDir "Run $runId failed"
 			gc $errorFilePath | %{ writeRunOutput $runDir $_ }
 		}
 	} else {
