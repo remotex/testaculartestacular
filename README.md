@@ -56,6 +56,14 @@ Output:
     IE 9.0: Executed 1 of 131 (1 FAILED) (skipped 8)
 ```
 
+## Wait?
+
+The script will block until the host process has picked up the new run.
+The host will finish executing any current runs before proceeding to the next.
+Multiple simlutaneous runs are not supported.
+
+If test runs times out often there are probably a need for another set of test devices! :)
+
 ## The Workspace
 
 The scripts stores the state of each run in a directory, which can be overridden as an option to the scripts.
